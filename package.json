@@ -1,0 +1,48 @@
+{
+  "name": "nmc-pizza-ecomm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d build",
+    "test": "eslint . --fix && jest --coverage --detectOpenHandles --forceExit --runInBand",
+    "tests": "jest --coverage --detectOpenHandles --forceExit --runInBand",
+    "test-logs": "jest --coverage --detectOpenHandles --runInBand",
+    "start": "npm run build && node index.js",
+    "lint": "eslint . --fix",
+    "dbon": "mkdir -p ./db && mongod --dbpath ./db",
+    "dboff": "killall mongod"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/__test__/lib/test.env.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TCW417/nmc-pizza-ecomm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TCW417/nmc-pizza-ecomm/issues"
+  },
+  "homepage": "https://github.com/TCW417/nmc-pizza-ecomm#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "jest": "^23.3.0",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
