@@ -67,6 +67,10 @@ lib.update = (dir, file, data, cb) => {
   });
 };
 
+lib.exists = (dir, file) => {
+  return fs.existsSync(`${lib.baseDir}/${dir}/${file}.json`);
+};
+
 lib.delete = (dir, file, cb) => {
   // unlink file 
   fs.unlink(`${lib.baseDir}/${dir}/${file}.json`, (err) => {

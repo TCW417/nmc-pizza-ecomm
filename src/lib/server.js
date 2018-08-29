@@ -12,6 +12,7 @@ import config from '../config';
 import userRoutes from '../routes/userRoutes';
 import tokenRoutes from '../routes/tokenRoutes';
 import menuRoutes from '../routes/menuRoutes';
+import cartRoutes from '../routes/cartRoutes';
 import miscRoutes from '../routes/miscRoutes';
 import helpers from './helpers';
 
@@ -24,6 +25,7 @@ const router = {
   users: userRoutes.users,
   tokens: tokenRoutes.tokens,
   menu: menuRoutes.menu,
+  cart: cartRoutes.cart,
 };
 
 const unifiedServer = (req, res) => {
