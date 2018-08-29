@@ -11,6 +11,7 @@ import util from 'util';
 import config from '../config';
 import userRoutes from '../routes/userRoutes';
 import tokenRoutes from '../routes/tokenRoutes';
+import menuRoutes from '../routes/menuRoutes';
 import miscRoutes from '../routes/miscRoutes';
 import helpers from './helpers';
 
@@ -22,6 +23,7 @@ const router = {
   ping: miscRoutes.ping,
   users: userRoutes.users,
   tokens: tokenRoutes.tokens,
+  menu: menuRoutes.menu,
 };
 
 const unifiedServer = (req, res) => {
@@ -78,7 +80,7 @@ const unifiedServer = (req, res) => {
       // If the resposne is 200, log in green, otherwise red
       let logColor = '\x1b[32m%s\x1b[0m';
       if (statusCode !== 200) logColor = '\x1b[31m%s\x1b[0m';
-      debug(logColor, `${method.toUpperCase} /${trimmedPath} Status ${statusCode} Payload:\n${jsonString}`);
+      debug(logColor, `${method.toUpperCase()} /${trimmedPath} Status ${statusCode} Payload:\n${jsonString}`);
     });
   });
     
