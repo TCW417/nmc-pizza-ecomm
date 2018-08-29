@@ -34,7 +34,7 @@ handlers._users.post = (data, cb) => {
     && data.payload.lastName.trim().length > 0
     ? data.payload.lastName.trim() : false;
   const email = typeof data.payload.email === 'string'
-    && data.payload.email.trim().length > 10
+    && data.payload.email.trim().length > 5
     && data.payload.email.indexOf('@') > 0
     ? data.payload.email.trim() : false;
   const address1 = typeof data.payload.address1 === 'string'
@@ -57,6 +57,16 @@ handlers._users.post = (data, cb) => {
   const tosAgreement = typeof data.payload.tosAgreement === 'boolean'
     && data.payload.tosAgreement;
   
+  console.log(data.payload);
+  console.log(firstName 
+    , lastName 
+    , email 
+    , address1
+    , city
+    , state
+    , zipcode
+    , password 
+    , tosAgreement);
   if (!(firstName 
     && lastName 
     && email 
@@ -110,7 +120,7 @@ handlers._users.post = (data, cb) => {
 handlers._users.get = (data, cb) => {
   // check that the email provided is valid (from query)
   const email = typeof data.query.email === 'string'
-    && data.query.email.trim().length > 10
+    && data.payload.email.trim().length > 5
     && data.query.email.indexOf('@') > 0
     ? data.query.email.trim() : false;
 
@@ -139,7 +149,7 @@ handlers._users.get = (data, cb) => {
 // Optional data: firstName, lastName, address1, address2, city, state, zipcode, password (at least one required)
 handlers._users.put = (data, cb) => {
   const email = typeof data.payload.email === 'string'
-    && data.payload.email.trim().length > 10
+    && data.payload.email.trim().length > 5
     && data.payload.email.indexOf('@') > 0
     ? data.payload.email.trim() : false;
 
@@ -220,7 +230,7 @@ handlers._users.put = (data, cb) => {
 // Optional data: none
 handlers._users.delete = (data, cb) => {
   const email = typeof data.query.email === 'string'
-    && data.query.email.trim().length > 10
+    && data.query.email.trim().length > 5
     && data.query.email.indexOf('@') > 0
     ? data.query.email.trim() : false;
 

@@ -25,7 +25,8 @@ handlers._tokens = {};
 // Optional data: none
 handlers._tokens.post = (data, cb) => {
   const email = typeof data.payload.email === 'string'
-    && data.payload.email.trim().length === 10
+    && data.payload.email.trim().length > 5
+    && data.payload.email.indexOf('@') > 0
     ? data.payload.email.trim() : false;
   const password = typeof data.payload.password === 'string'
     && data.payload.password.trim().length > 0
