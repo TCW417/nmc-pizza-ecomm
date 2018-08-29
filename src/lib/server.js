@@ -11,7 +11,6 @@ import util from 'util';
 import config from '../config';
 import userRoutes from '../routes/userRoutes';
 import tokenRoutes from '../routes/tokenRoutes';
-import checksRoutes from '../routes/checksRoutes';
 import miscRoutes from '../routes/miscRoutes';
 import helpers from './helpers';
 
@@ -23,7 +22,6 @@ const router = {
   ping: miscRoutes.ping,
   users: userRoutes.users,
   tokens: tokenRoutes.tokens,
-  checks: checksRoutes.checks,
 };
 
 const unifiedServer = (req, res) => {

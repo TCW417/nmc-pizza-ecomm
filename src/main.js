@@ -1,7 +1,7 @@
 'use strict';
 
 import startServer from './lib/server';
-import startWorkers from './lib/workers';
+// import startWorkers from './lib/workers';
 
 startServer();
-startWorkers();
+// startWorkers();
