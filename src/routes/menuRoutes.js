@@ -19,7 +19,7 @@ handlers.menu = (data, cb) => {
 // container for all the token methods
 handlers._menu = {};
 
-// tokens get
+// menu get
 // Required data: none
 // Optional data: none
 handlers._menu.get = (data, cb) => {

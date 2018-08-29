@@ -85,4 +85,64 @@ handlers._cart.post = (data, cb) => {
   });
 };
 
+// cart get
+// Required data: none
+// Optional data: none
+handlers._cart.get = (data, cb) => {
+  // get the token from the header
+  const token = typeof data.headers.token === 'string' ? data.headers.token : false;
+  // read the token data
+  _data.read('tokens', token, (terr, tokenData) => {
+    if (terr || !tokenData) return cb(403, { Error: 'Missing or invalid token' });
+    // verify that the token has not expired
+    if (tokenData.expires < Date.now()) return cb(403, { Error: 'Token has expired' });
+    
+    _data.read('carts', tokenData.email, (err, cartData) => {
+      if (err) return cb(404, { Error: 'Cart file not found' });
+      return cb(200, cartData);
+    });
+    return undefined;
+  });
+};
+
+// cart put
+// Required data: updated cart array object
+// Optional data: none
+handlers._cart.put = (data, cb) => {
+  // get the token from the header
+  const token = typeof data.headers.token === 'string' ? data.headers.token : false;
+  // read the token data
+  _data.read('tokens', token, (terr, tokenData) => {
+    if (terr || !tokenData) return cb(403, { Error: 'Missing or invalid token' });
+    // verify that the token has not expired
+    if (tokenData.expires < Date.now()) return cb(403, { Error: 'Token has expired' });
+    
+    _data.update('carts', tokenData.email, data.payload, (err, cartData) => {
+      if (err) return cb(500, { Error: `Unable to update cart: ${err}` });
+      return cb(200, cartData);
+    });
+    return undefined;
+  });
+};
+
+// cart delete
+// Required data: none (cart name taken from token)
+// Optional data: none
+handlers._cart.delete = (data, cb) => {
+  // get the token from the header
+  const token = typeof data.headers.token === 'string' ? data.headers.token : false;
+  // read the token data
+  _data.read('tokens', token, (terr, tokenData) => {
+    if (terr || !tokenData) return cb(403, { Error: 'Missing or invalid token' });
+    // verify that the token has not expired
+    if (tokenData.expires < Date.now()) return cb(403, { Error: 'Token has expired' });
+    
+    _data.delete('carts', tokenData.email, (err) => {
+      if (err) return cb(500, { Error: `Unable to delete cart: ${err}` });
+      return cb(200);
+    });
+    return undefined;
+  });
+};
+
 export default handlers;
